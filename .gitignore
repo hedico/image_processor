@@ -1,0 +1,11 @@
+# Node
+node_modules/
+
+# Generated output
+dist/
+
+# Typescript cache
+*.tsbuildinfo
+
+# Dotenv environment variables file
+.env
