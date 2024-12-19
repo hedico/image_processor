@@ -39,13 +39,13 @@ obtaining information about their status and the images generated.
   npm run lint
 
 - Build containers
-  ´´´bach
+  ´´´bash
   npm run build:environment
 
 - Refresh containers
-  ´´´bach
+  ´´´bash
   npm run refresh:environment
 
 - Remove containers
-  ´´´bach
+  ´´´bash
   npm run remove:environment
