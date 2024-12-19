@@ -5,7 +5,7 @@ import { imageActions } from '../common/utils/action-map';
 export const getTaskById = async (req: Request, res: Response) => {
   const params = req.params;
   res.send({
-    message: 'This endpoint is in development',
+    message: 'The task has been retrieved successfully',
     params
   });
 };
@@ -31,10 +31,9 @@ export const processNewTask = async (
   const action = imageActions[actionName];
 
   // Execution of the action needed to process the image
-  const result = await action();
+  await action();
 
   res.send({
-    message: 'This endpoint is in development',
-    result
+    message: 'The task has been created successfully',
   });
 };

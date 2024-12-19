@@ -50,8 +50,14 @@ obtaining information about their status and the images generated.
   ```bash
   npm run remove:environment
 
+- Execute unit tests
+  ```bash
+  npm run test
+
 
 # Comments
 
 
 - The decision to use Axios as a library to launch HTTP requests has been that it offers error handling, while for example Fetch, native of Nodejs does not have it.
+- This API uses Multer as image upload manager because it is convenient and does not require much additional development.
+- This development uses Jest for testing because it is a powerfull and widely used testing framework.
