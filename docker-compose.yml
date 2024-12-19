@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: image_processor_mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: image_processor_node
+    ports:
+      - "3500:3500"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://root:password@mongo:27017/mydatabase?authSource=admin
+    restart: always
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm start
+
+volumes:
+  mongo-data:
+    driver: local

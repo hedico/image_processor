@@ -37,3 +37,15 @@ obtaining information about their status and the images generated.
 - Lint
   ```bash
   npm run lint
+
+- Build containers
+  ´´´bach
+  npm run build:environment
+
+- Refresh containers
+  ´´´bach
+  npm run refresh:environment
+
+- Remove containers
+  ´´´bach
+  npm run remove:environment

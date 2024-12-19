@@ -1,14 +1,17 @@
 {
   "name": "image_processor",
   "description": "Generate images in multiple resolutions from an original image",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
     "start": "node dist/src/app/index.js",
-    "start:dev": "ts-node src/app/index.ts",
+    "start:dev": "ENVIRONMENT=local ts-node src/app/index.ts",
     "build": "tsc --build",
     "refresh:dependencies": "rm -rf node_modules package-lock.json && npm i",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:environment": "docker-compose up --build",
+    "refresh:environment": "docker-compose down --volumes && docker-compose up --build",
+    "remove:environment": "docker-compose down --volumes"
   },
   "author": "hedico",
   "license": "ISC",
