@@ -39,13 +39,19 @@ obtaining information about their status and the images generated.
   npm run lint
 
 - Build containers
-  ´´´bash
+  ```bash
   npm run build:environment
 
 - Refresh containers
-  ´´´bash
+  ```bash
   npm run refresh:environment
 
 - Remove containers
-  ´´´bash
+  ```bash
   npm run remove:environment
+
+
+# Comments
+
+
+- The decision to use Axios as a library to launch HTTP requests has been that it offers error handling, while for example Fetch, native of Nodejs does not have it.
