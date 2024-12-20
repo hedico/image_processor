@@ -61,3 +61,4 @@ obtaining information about their status and the images generated.
 - The decision to use Axios as a library to launch HTTP requests has been that it offers error handling, while for example Fetch, native of Nodejs does not have it.
 - This API uses Multer as image upload manager because it is convenient and does not require much additional development.
 - This development uses Jest for testing because it is a powerfull and widely used testing framework.
+- The dependency used to create the image variants at different resolutions is sharp. it made the work easier and it was also a requirement.

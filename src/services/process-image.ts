@@ -12,6 +12,7 @@ export const processImageFomPath = async (imagePath: string): Promise<void> => {
       fs.mkdirSync(OUTPUT_DIR);
     }
 
+    // Check if the resource exists
     if (!fs.existsSync(imagePath)) {
       const error: Error = {
         name: 'IMAGE_PROCESS_FAILED',
@@ -25,6 +26,7 @@ export const processImageFomPath = async (imagePath: string): Promise<void> => {
     const fileExtension = path.extname(fileName).toLowerCase();
     const fileNameNoExt = path.parse(fileName).name;
 
+    // We check if the resource output folder exists
     if (!fs.existsSync(`${OUTPUT_DIR}/${fileNameNoExt}`)) {
       fs.mkdirSync(`${OUTPUT_DIR}/${fileNameNoExt}`);
     }
@@ -40,7 +42,8 @@ export const processImageFomPath = async (imagePath: string): Promise<void> => {
         fs.rmdirSync(`${OUTPUT_DIR}/${fileNameNoExt}`);
         return error;
       });
-
+    
+    // We generate the resolution variants from the resolutions array
     const outputPaths = await RESOLUTIONS.reduce(async (accP, resolution) => {
       const acc = await accP;
       const outputPath = path.join(
