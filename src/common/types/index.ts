@@ -6,7 +6,8 @@ export type TaskStatus = (typeof taskStatuses)[number];
 export const errorNames = [
   'NOT_FOUND',
   'INTERNAL_ERROR',
-  'BAD_REQUEST'
+  'BAD_REQUEST',
+  'IMAGE_PROCESS_FAILED'
 ] as const;
 
 export type ErrorNames = typeof errorNames[number];

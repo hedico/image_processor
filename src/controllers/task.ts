@@ -5,6 +5,7 @@ import { isValidObjectId } from 'mongoose';
 import { isError } from '../common/utils';
 import { downloadImage } from '../services/download-image';
 import path from 'path';
+import { processImageFomPath } from '../services/process-image';
 
 const inputDirectory = 'input/';
 
@@ -66,6 +67,8 @@ export const processNewTask = async (
     if (isError(result)) {
       next(result);
     }
+
+    processImageFomPath(imagePath);
 
     res.send({
       message: 'The task has been created successfully',
