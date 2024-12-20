@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { HttpError } from '../common/types';
-import { imageActions } from '../common/utils/action-map';
+import { createTask } from '../services/task';
 
 export const getTaskById = async (req: Request, res: Response) => {
   const params = req.params;
@@ -26,14 +26,10 @@ export const processNewTask = async (
     return next(error);
   }
 
-  const actionName = file ? 'upload' : 'download';
-
-  const action = imageActions[actionName];
-
-  // Execution of the action needed to process the image
-  await action();
+  const task = await createTask(file?.filename || imgUrl);
 
   res.send({
     message: 'The task has been created successfully',
+    task
   });
 };

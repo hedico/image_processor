@@ -1,15 +1,9 @@
-import { Task } from '../interfaces/task';
-
 // Possible task status
-export const taskStatus = ['pending', 'completed', 'failed'] as const;
+export const taskStatuses = ['pending', 'completed', 'failed'] as const;
 // Type created with the possible states of the task
-export type TaskStatus = (typeof taskStatus)[number];
+export type TaskStatus = (typeof taskStatuses)[number];
 
-export type ImageAction = (
-  imageUrl?: string,
-  file?: Express.Multer.File
-) => Promise<Task>;
-
+// HttpError add status to basic Error
 export type HttpError = {
   status: number;
 } & Error;

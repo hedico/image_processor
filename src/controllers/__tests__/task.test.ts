@@ -1,17 +1,14 @@
 import { processNewTask } from '../task';
 import { Request, Response } from 'express';
-import { MULTER_FILE_MOCK } from './mocks';
-import { imageActions } from '../../common/utils/action-map';
-
-jest.mock('../../common/utils/action-map', () => ({
-  imageActions: {
-    upload: jest.fn(),
-    download: jest.fn()
-  }
-}));
+import { TASK_MOCK } from './mocks';
+import { createTask } from '../../services/task';
 
 const res: Partial<Response> = { send: jest.fn() };
 const next = jest.fn();
+
+jest.mock('../../services/task', () => ({
+  createTask: jest.fn()
+}));
 
 describe('Controller: processNewTask', () => {
   it('Should return a 400 status code', async () => {
@@ -26,28 +23,19 @@ describe('Controller: processNewTask', () => {
     });
   });
 
-  it('Should call upload action in imageActions', async () => {
-    const req = { file: MULTER_FILE_MOCK, body: { imgUrl: undefined } };
-
-    await processNewTask(req as Request, res as Response, next);
-
-    expect(imageActions.upload).toHaveBeenCalled();
-    expect(res.send).toHaveBeenCalledWith({
-      message: 'The task has been created successfully'
-    });
-  });
-
-  it('Should call download action in imageActions', async () => {
+  it('Should complete the happy path', async () => {
     const req = {
       file: undefined,
       body: { imgUrl: 'http://example.com/image.jpg' }
     };
 
+    (createTask as jest.Mock).mockResolvedValue(TASK_MOCK);
+
     await processNewTask(req as Request, res as Response, next);
 
-    expect(imageActions.download).toHaveBeenCalled();
     expect(res.send).toHaveBeenCalledWith({
-      message: 'The task has been created successfully'
+      message: 'The task has been created successfully',
+      task: TASK_MOCK
     });
   });
 });
