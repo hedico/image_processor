@@ -21,3 +21,9 @@ export const TASK_MOCK = {
   _id: '6764b9a2667ff4d7f4714c46',
   __v: 0
 };
+
+export const RETURN_CREATED_TASK = {
+  status: 'pending',
+  price: 23.05,
+  createdAt: '2024-12-20T00:26:10.694Z'
+};

@@ -11,7 +11,7 @@ const startServer = async () => {
   await mongo.connect();
 
   // Start the server and listen for incoming requests
-  app.listen(PORT, () => console.log(`Server listening in port ${PORT}`));
+  app.listen(PORT, () => console.log(`Server listening in port ${PORT}\n`));
 };
 
 // Starts server instance and connects to database

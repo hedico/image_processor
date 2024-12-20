@@ -1,0 +1,1 @@
+export const isError = <T>(i: T | Error): i is Error => i && !!(i as Error).name;
