@@ -9,3 +9,7 @@ dist/
 
 # Dotenv environment variables file
 .env
+
+#Image folders
+input/
+output/

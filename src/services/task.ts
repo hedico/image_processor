@@ -57,7 +57,11 @@ export const createTask = async (originalPath: string) => {
       createdAt: new Date().toISOString()
     });
     await task.save();
-    return task;
+    return {
+      status: task.status,
+      price: task.price,
+      createdAt: task.createdAt
+    };
   } catch (err: any) {
     const error: Error = {
       name: 'INTERNAL_ERROR',
