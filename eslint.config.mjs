@@ -19,7 +19,6 @@ export default [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended'
   ),
-  // Configuration object with a single 'ignores' prop works as a global
   {
     ignores: ['dist/', 'node_modules/', 'scripts/']
   },
